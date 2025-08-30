@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Input, ViewChild, effect, OnDestroy, OnInit, AfterViewInit, HostBinding } from '@angular/core';
-import { SortingService } from './sorting.service';
-import { AlgorithmKey, createAlgorithm, AlgoHost } from './sorting-algorithms';
-import { formatAlgoName } from './utils';
+import { SortingService } from '../sorting.service';
+import { AlgorithmKey, createAlgorithm, AlgoHost } from '../sorting-algorithms';
+import { formatAlgoName } from '../utils';
 
 @Component({
   selector: 'app-algorithm-card',

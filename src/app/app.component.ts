@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, QueryList, ViewChildren, computed } from '@angular/core';
-import { AlgorithmCardComponent } from './algorithm-card.component';
+import { AlgorithmCardComponent } from './components/algorithm-card.component';
 import { SortingService } from './sorting.service';
 import { AlgorithmKey } from './sorting-algorithms';
 

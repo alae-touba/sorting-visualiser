@@ -5,15 +5,26 @@
     <div class="d-flex align-items-center gap-2 controls-inline">
       <div class="form-inline me-3">
         <label class="me-2 mb-0 small" for="speedRange">Speed</label>
-        <input type="range" id="speedRange" min="1" max="100"
-               [value]="sorting.speed()" (input)="onSpeedInput($event)">
+        <input 
+          type="range" 
+          id="speedRange" 
+          min="1" 
+          max="100"
+          [value]="sorting.speed()" 
+          (input)="onSpeedInput($event)"
+        >
       </div>
 
       <div class="form-inline me-3">
         <label class="me-2 mb-0 small" for="densityRange">Bars</label>
-        <input type="range" id="densityRange"
-               [min]="sorting.DENSITY.MIN" [max]="sorting.DENSITY.MAX"
-               [value]="sorting.density()" (input)="onDensityInput($event)">
+        <input 
+          type="range" 
+          id="densityRange"
+          [min]="sorting.DENSITY.MIN" 
+          [max]="sorting.DENSITY.MAX"
+          [value]="sorting.density()" 
+          (input)="onDensityInput($event)"
+        >
       </div>
 
       <button class="btn btn-danger me-2" (click)="sortAll()" [disabled]="uiLocked">Sort all</button>
