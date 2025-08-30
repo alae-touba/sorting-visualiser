@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, QueryList, ViewChildren } from '@angular/core';
-import { AlgorithmCardComponent } from './components/algorithm-card.component';
-import { SortingService } from './sorting.service';
-import { AlgorithmKey } from './sorting-algorithms';
-import { HeaderComponent } from './components/header.component';
+import { AlgorithmCardComponent } from './components/algorithm-card/algorithm-card.component';
+import { SortingService } from './services/sorting.service';
+import { AlgorithmKey } from './algorithms';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',

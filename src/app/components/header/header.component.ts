@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SortingService } from '../sorting.service';
+import { SortingService } from '../../services/sorting.service';
 
 @Component({
   selector: 'app-header',
