@@ -1,0 +1,2 @@
+/* small spacing parity with original */
+.controls-inline > * + * { margin-left: .5rem; }

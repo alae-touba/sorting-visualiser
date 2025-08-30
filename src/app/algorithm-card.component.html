@@ -1,0 +1,20 @@
+<div class="card algo-card" [class.sorting-disabled]="isSorting">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">{{ key | titlecase }}{{ '' }}</h5>
+    <small class="text-muted" title="Best/Avg/Worst: see docs"></small>
+  </div>
+  <div class="card-body">
+    <div class="canvas-wrap mb-3">
+      <canvas #canvas>Your browser does not support the HTML5 canvas tag</canvas>
+    </div>
+
+    <div class="controls-row d-flex justify-content-center">
+      <button class="btn btn-primary mr-2" (click)="sort()" [disabled]="isSorting">Sort</button>
+      <button class="btn btn-outline-warning btn-icon" (click)="increaseBars()" [disabled]="isSorting" aria-label="Increase bars (decreases spacing)">More bars</button>
+      <button class="btn btn-outline-warning btn-icon" (click)="decreaseBars()" [disabled]="isSorting" aria-label="Decrease bars (increases spacing)">Fewer bars</button>
+      <button class="btn btn-secondary" (click)="generateNewBarsFromGlobal()" [disabled]="isSorting">Generate New Bars</button>
+    </div>
+
+    <div class="text-center mt-2 card-note">Adjust bar density or generate new bars</div>
+  </div>
+</div>

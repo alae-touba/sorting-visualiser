@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="container d-flex justify-content-between align-items-center">
+    <span class="navbar-brand mb-0 h1">{{ title }}</span>
+
+    <div class="d-flex align-items-center gap-2 controls-inline">
+      <div class="form-inline me-3">
+        <label class="me-2 mb-0 small" for="speedRange">Speed</label>
+        <input type="range" id="speedRange" min="1" max="100"
+               [value]="sorting.speed()" (input)="onSpeedInput($event)">
+      </div>
+
+      <div class="form-inline me-3">
+        <label class="me-2 mb-0 small" for="densityRange">Bars</label>
+        <input type="range" id="densityRange"
+               [min]="sorting.DENSITY.MIN" [max]="sorting.DENSITY.MAX"
+               [value]="sorting.density()" (input)="onDensityInput($event)">
+      </div>
+
+      <button class="btn btn-danger me-2" (click)="sortAll()" [disabled]="uiLocked">Sort all</button>
+      <button class="btn btn-secondary" (click)="resetAll()" [disabled]="uiLocked">Reset all</button>
+    </div>
+  </div>
+</nav>
+
+<main class="container-lg py-4" id="main-content">
+  <div class="row">
+    <app-algorithm-card *ngFor="let key of algorithms" [key]="key"></app-algorithm-card>
+  </div>
+</main>
+
+<footer class="text-center text-muted small pb-4">
+  <span>Tip: use the sliders to change animation speed and number of bars.</span>
+</footer>
