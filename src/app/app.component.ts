@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, QueryList, ViewChildren, computed } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { AlgorithmCardComponent } from './components/algorithm-card.component';
 import { SortingService } from './sorting.service';
 import { AlgorithmKey } from './sorting-algorithms';
+import { HeaderComponent } from './components/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, AlgorithmCardComponent],
+  imports: [CommonModule, AlgorithmCardComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -28,17 +29,6 @@ export class AppComponent {
   uiLocked = false;
 
   constructor(public sorting: SortingService) {}
-
-  onSpeedInput(event: Event) {
-    const v = (event.target as HTMLInputElement).valueAsNumber;
-    this.sorting.speed.set(v);
-  }
-
-  onDensityInput(event: Event) {
-    const v = (event.target as HTMLInputElement).valueAsNumber;
-    this.sorting.density.set(v);
-    // Each card effect() already refreshes when density changes.
-  }
 
   async sortAll() {
     this.uiLocked = true;
