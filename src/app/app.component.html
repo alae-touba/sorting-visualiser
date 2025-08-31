@@ -1,4 +1,16 @@
-<app-header [title]="title" [uiLocked]="uiLocked" (sortAllClicked)="sortAll()" (resetAllClicked)="resetAll()"></app-header>
+<app-header 
+  [title]="title" 
+  [uiLocked]="uiLocked" 
+  [speed]="sorting.speed()"
+  [density]="sorting.density()"
+  [densityMin]="sorting.DENSITY.MIN"
+  [densityMax]="sorting.DENSITY.MAX"
+  (sortAllClicked)="sortAll()" 
+  (resetAllClicked)="resetAll()"
+  (speedChanged)="onSpeedChange($event)"
+  (densityChanged)="onDensityChange($event)"
+>
+</app-header>
 
 <main class="container-lg py-4" id="main-content">
   <div class="row">

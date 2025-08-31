@@ -30,6 +30,14 @@ export class AppComponent {
 
   constructor(public sorting: SortingService) {}
 
+  onSpeedChange(speed: number): void {
+    this.sorting.speed.set(speed);
+  }
+
+  onDensityChange(density: number): void {
+    this.sorting.density.set(density);
+  }
+
   async sortAll() {
     this.uiLocked = true;
     try {

@@ -9,8 +9,8 @@
           type="range"
           id="speedRange"
           min="1"
-          max="100"
-          [value]="sorting.speed()"
+          max="100"          
+          [value]="speed"
           (input)="onSpeedInput($event)"
         >
       </div>
@@ -20,15 +20,19 @@
         <input
           type="range"
           id="densityRange"
-          [min]="sorting.DENSITY.MIN"
-          [max]="sorting.DENSITY.MAX"
-          [value]="sorting.density()"
+          [min]="densityMin"
+          [max]="densityMax"
+          [value]="density"
           (input)="onDensityInput($event)"
         >
       </div>
 
-      <button class="btn btn-danger me-2" (click)="sortAll()" [disabled]="uiLocked">Sort all</button>
-      <button class="btn btn-secondary" (click)="resetAll()" [disabled]="uiLocked">Reset all</button>
+      <button class="btn btn-danger me-2" (click)="sortAll()" [disabled]="uiLocked">
+        Sort all
+      </button>
+      <button class="btn btn-secondary" (click)="resetAll()" [disabled]="uiLocked">
+        Reset all
+      </button>
     </div>
   </div>
 </nav>

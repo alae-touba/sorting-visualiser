@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SortingService } from '@services/sorting.service';
 
 @Component({
   selector: 'app-header',
@@ -10,21 +9,42 @@ import { SortingService } from '@services/sorting.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Input({ required: true }) title!: string;
-  @Input() uiLocked = false;
-  @Output() sortAllClicked = new EventEmitter<void>();
-  @Output() resetAllClicked = new EventEmitter<void>();
+  @Input({ required: true })
+  title!: string;
 
-  constructor(public sorting: SortingService) {}
+  @Input()
+  uiLocked = false;
+
+  @Input()
+  speed!: number;
+
+  @Input()
+  density!: number;
+
+  @Input()
+  densityMin!: number;
+
+  @Input()
+  densityMax!: number;
+
+  @Output()
+  sortAllClicked = new EventEmitter<void>();
+
+  @Output()
+  resetAllClicked = new EventEmitter<void>();
+
+  @Output()
+  speedChanged = new EventEmitter<number>();
+
+  @Output()
+  densityChanged = new EventEmitter<number>();
 
   onSpeedInput(event: Event) {
-    const v = (event.target as HTMLInputElement).valueAsNumber;
-    this.sorting.speed.set(v);
+    this.speedChanged.emit((event.target as HTMLInputElement).valueAsNumber);
   }
 
   onDensityInput(event: Event) {
-    const v = (event.target as HTMLInputElement).valueAsNumber;
-    this.sorting.density.set(v);
+    this.densityChanged.emit((event.target as HTMLInputElement).valueAsNumber);
   }
 
   sortAll() {
