@@ -16,7 +16,7 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
   class = 'col-lg-6 col-md-12 mb-4';
   
   @Input({ required: true }) 
-  key!: AlgorithmKey;
+  algoKey!: AlgorithmKey;
 
   @ViewChild('canvas', { static: true }) 
   canvasRef!: ElementRef<HTMLCanvasElement>;
@@ -32,7 +32,7 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
   private ctx!: CanvasRenderingContext2D;
 
   constructor(public sorting: SortingService, private hostEl: ElementRef<HTMLElement>) {
-    this.name = this.key;
+    this.name = this.algoKey;
     // react to global density slider: update spacing & regenerate
     effect(() => {
       const globalDensity = this.sorting.density();
@@ -81,7 +81,7 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
   async sort() {
     this.isSorting = true;
     try {
-      const algo = createAlgorithm(this.key, this);
+      const algo = createAlgorithm(this.algoKey, this);
       await algo.sort();
     } finally {
       this.isSorting = false;
@@ -158,5 +158,5 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
   }
 
   // ---------- helpers ----------
-  protected format(key: string) { return formatAlgoName(key); }
+  protected format(algoKey: string) { return formatAlgoName(algoKey); }
 }

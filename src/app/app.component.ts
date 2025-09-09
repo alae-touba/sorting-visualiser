@@ -24,7 +24,8 @@ export class AppComponent {
     'bubbleSort',
   ];
 
-  @ViewChildren(AlgorithmCardComponent) cards!: QueryList<AlgorithmCardComponent>;
+  @ViewChildren(AlgorithmCardComponent) 
+  cards!: QueryList<AlgorithmCardComponent>;
 
   uiLocked = false;
 
