@@ -21,18 +21,18 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
   @ViewChild('canvas', { static: true }) 
   canvasRef!: ElementRef<HTMLCanvasElement>;
   
+  // Canvas drawing
+  private ctx!: CanvasRenderingContext2D;
+  
   private resizeObs?: ResizeObserver;
 
-  name: AlgorithmKey;
+  
   barHeights: number[] = [];
   barSpacing!: number;
   isSorting = false;
 
-  // Canvas drawing
-  private ctx!: CanvasRenderingContext2D;
-
   constructor(public sorting: SortingService, private hostEl: ElementRef<HTMLElement>) {
-    this.name = this.algoKey;
+    
     // react to global density slider: update spacing & regenerate
     effect(() => {
       const globalDensity = this.sorting.density();

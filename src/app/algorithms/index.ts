@@ -2,14 +2,14 @@ import { sleep } from '@utils';
 import { AlgorithmKey } from '@models';
 
 export interface AlgoHost {
-  name: string;
+  
   barHeights: number[];
   renderBars: () => void;
   getDelay: () => number; // host provides current delay based on global speed
 }
 
 abstract class SortingAlgorithm {
-  constructor(public name: string, protected host: AlgoHost) {}
+  constructor(protected host: AlgoHost) {}
 
   protected async tick() { 
     await sleep(this.host.getDelay()); 
@@ -151,14 +151,14 @@ export class InsertionSort extends SortingAlgorithm {
 export function createAlgorithm(key: AlgorithmKey, host: AlgoHost) {
   switch (key) {
     case 'quickSort': 
-      return new QuickSort(key, host);
+      return new QuickSort(host);
     case 'shellSort': 
-      return new ShellSort(key, host);
+      return new ShellSort(host);
     case 'bubbleSort': 
-      return new BubbleSort(key, host);
+      return new BubbleSort(host);
     case 'selectionSort': 
-      return new SelectionSort(key, host);
+      return new SelectionSort(host);
     case 'insertionSort': 
-      return new InsertionSort(key, host);
+      return new InsertionSort(host);
   }
 }
