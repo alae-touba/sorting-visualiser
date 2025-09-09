@@ -109,7 +109,9 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
 
   /** public API used by parent (Sort all / Reset all) */
   refresh() {
-    if (!this.ctx) { return; } // Guard against premature rendering
+    if (!this.ctx) { 
+      return; 
+    } // Guard against premature rendering
     const canvas = this.canvasRef.nativeElement;
     this.setCanvasSizeToParent(canvas);
     this.generateBarHeights();

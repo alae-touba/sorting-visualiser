@@ -25,7 +25,7 @@ export class AppComponent {
   ];
 
   @ViewChildren(AlgorithmCardComponent) 
-  cards!: QueryList<AlgorithmCardComponent>;
+  algorithmCards!: QueryList<AlgorithmCardComponent>;
 
   uiLocked = false;
 
@@ -42,7 +42,7 @@ export class AppComponent {
   async sortAll() {
     this.uiLocked = true;
     try {
-      await Promise.all(this.cards.map(c => c.sort()));
+      await Promise.all(this.algorithmCards.map(c => c.sort()));
     } finally {
       this.uiLocked = false;
     }
@@ -51,6 +51,6 @@ export class AppComponent {
   resetAll() {
     this.sorting.speed.set(this.sorting.SPEED.SLIDER_DEFAULT);
     this.sorting.density.set(this.sorting.DENSITY.DEFAULT);
-    this.cards.forEach(c => c.refresh());
+    this.algorithmCards.forEach(c => c.refresh());
   }
 }
