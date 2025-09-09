@@ -51,6 +51,32 @@ key!: AlgorithmKey;
 @Input({ required: true }) key!: AlgorithmKey;
 ```
 
+### Function Formatting
+- Class methods and regular function declarations must not be written on a single line. Place the opening brace on the same line as the signature, then put the body on the next line, and close with a brace on its own line. Use 2-space indentation inside the body.
+
+```ts
+// Preferred
+async sort(): Promise<void> {
+  throw new Error('Must implement');
+}
+
+// Avoid
+async sort(): Promise<void> { throw new Error('Must implement'); }
+```
+
+- Multi-line control structures (if, for, while, etc.) should always use braces, even when technically optional:
+
+```ts
+// Preferred
+if (condition) {
+  doSomething();
+}
+
+// Avoid
+if (condition)
+  doSomething();
+```
+
 ## Testing Guidelines
 - Framework: Jasmine + Karma; place tests beside code as `*.spec.ts`.
 - Tests: Keep fast and deterministic; mock DOM/canvas where appropriate.
