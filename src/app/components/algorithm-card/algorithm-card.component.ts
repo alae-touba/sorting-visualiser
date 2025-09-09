@@ -12,10 +12,15 @@ import { formatAlgoName } from '@utils';
   styleUrls: ['./algorithm-card.component.css']
 })
 export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy, AlgoHost {
-  @HostBinding('class') class = 'col-lg-6 col-md-12 mb-4';
-  @Input({ required: true }) key!: AlgorithmKey;
+  @HostBinding('class') 
+  class = 'col-lg-6 col-md-12 mb-4';
+  
+  @Input({ required: true }) 
+  key!: AlgorithmKey;
 
-  @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('canvas', { static: true }) 
+  canvasRef!: ElementRef<HTMLCanvasElement>;
+  
   private resizeObs?: ResizeObserver;
 
   name: AlgorithmKey;
@@ -39,13 +44,14 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
     });
   }
 
+  ngOnInit(): void {
+    this.barSpacing = this.sorting.density();
+  }
+
   // AlgoHost
   getDelay = () => this.sorting.currentDelay();
   renderBars = () => this.drawBars();
 
-  ngOnInit(): void {
-    this.barSpacing = this.sorting.density();
-  }
 
   ngAfterViewInit(): void {
     const canvas = this.canvasRef.nativeElement;

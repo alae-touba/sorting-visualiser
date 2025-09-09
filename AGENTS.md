@@ -39,6 +39,18 @@ An Angular-based sorting algorithm visualizer that renders multiple algorithms s
 - Naming: Files in kebab‑case (e.g., `algorithm-card.component.ts`); classes in PascalCase; functions/vars in camelCase.
 - Imports: Prefer path aliases over relative paths (e.g., `@algorithms` not `../../algorithms`).
 
+### Decorator Formatting
+- Decorators like `@Input`, `@Output`, `@ViewChild`, etc. must be on their own line, with the decorated member on the next line using the same indentation.
+
+```ts
+// Preferred
+@Input({ required: true })
+key!: AlgorithmKey;
+
+// Avoid
+@Input({ required: true }) key!: AlgorithmKey;
+```
+
 ## Testing Guidelines
 - Framework: Jasmine + Karma; place tests beside code as `*.spec.ts`.
 - Tests: Keep fast and deterministic; mock DOM/canvas where appropriate.
