@@ -1,4 +1,5 @@
 import { sleep } from '@utils';
+import { AlgorithmKey } from '@models';
 
 export interface AlgoHost {
   name: string;
@@ -146,8 +147,6 @@ export class InsertionSort extends SortingAlgorithm {
     }
   }
 }
-
-export type AlgorithmKey = 'shellSort' | 'quickSort' | 'bubbleSort' | 'selectionSort' | 'insertionSort';
 
 export function createAlgorithm(key: AlgorithmKey, host: AlgoHost) {
   switch (key) {

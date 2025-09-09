@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Input, ViewChild, effect, OnDestroy, OnInit, AfterViewInit, HostBinding } from '@angular/core';
 import { SortingService } from '@services/sorting.service';
-import { AlgorithmKey, createAlgorithm, AlgoHost } from '@algorithms';
-import { formatAlgoName } from '@utils';
+import { createAlgorithm, AlgoHost } from '@algorithms';
+import { AlgorithmKey } from '@models';
 
 @Component({
   selector: 'app-algorithm-card',
@@ -56,7 +56,9 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
   ngAfterViewInit(): void {
     const canvas = this.canvasRef.nativeElement;
     const ctx = canvas.getContext('2d');
-    if (!ctx) throw new Error('2D context not available');
+    if (!ctx) {
+      throw new Error('2D context not available');
+    }
     this.ctx = ctx;
 
     // Ensure size & first render
@@ -159,6 +161,5 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
     }
   }
 
-  // ---------- helpers ----------
-  protected format(algoKey: string) { return formatAlgoName(algoKey); }
+  
 }

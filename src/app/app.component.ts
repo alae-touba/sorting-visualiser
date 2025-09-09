@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, QueryList, ViewChildren } from '@angular/core';
 import { AlgorithmCardComponent } from '@components/algorithm-card/algorithm-card.component';
 import { SortingService } from '@services/sorting.service';
-import { AlgorithmKey } from '@algorithms';
 import { HeaderComponent } from '@components/header/header.component';
+import { AlgorithmKey } from '@models';
 
 @Component({
   selector: 'app-root',
