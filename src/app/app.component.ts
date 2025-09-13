@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Component, QueryList, ViewChildren, signal } from '@angular/core';
 import { AlgorithmCardComponent } from '@components/algorithm-card/algorithm-card.component';
 import { SortingService } from '@services/sorting.service';
 import { HeaderComponent } from '@components/header/header.component';
@@ -22,7 +22,7 @@ export class AppComponent {
   @ViewChildren(AlgorithmCardComponent) 
   algorithmCards!: QueryList<AlgorithmCardComponent>;
 
-  uiLocked = false;
+  uiLocked = signal(false);
 
   constructor(public sorting: SortingService) {}
 
@@ -35,11 +35,11 @@ export class AppComponent {
   }
 
   async sortAll() {
-    this.uiLocked = true;
+    this.uiLocked.set(true);
     try {
       await Promise.all(this.algorithmCards.map(c => c.sort()));
     } finally {
-      this.uiLocked = false;
+      this.uiLocked.set(false);
     }
   }
 
