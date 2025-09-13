@@ -3,6 +3,7 @@ import { Component, QueryList, ViewChildren } from '@angular/core';
 import { AlgorithmCardComponent } from '@components/algorithm-card/algorithm-card.component';
 import { SortingService } from '@services/sorting.service';
 import { HeaderComponent } from '@components/header/header.component';
+import { algorithms } from '@algorithms';
 import { AlgorithmKey } from '@models';
 
 @Component({
@@ -16,13 +17,7 @@ export class AppComponent {
   title = 'Sorting Visualiser';
 
   // The five algorithms we render
-  algorithms: AlgorithmKey[] = [
-    'quickSort',
-    'shellSort',
-    'insertionSort',
-    'selectionSort',
-    'bubbleSort',
-  ];
+  algorithms = Object.keys(algorithms) as AlgorithmKey[];
 
   @ViewChildren(AlgorithmCardComponent) 
   algorithmCards!: QueryList<AlgorithmCardComponent>;
