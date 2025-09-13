@@ -1,1 +1,4 @@
-export type AlgorithmKey = 'shellSort' | 'quickSort' | 'bubbleSort' | 'selectionSort' | 'insertionSort';
+import { algorithms } from './algorithms';
+
+export type AlgorithmKey = keyof typeof algorithms;
+

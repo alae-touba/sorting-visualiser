@@ -1,5 +1,4 @@
 import { sleep } from '@utils';
-import { AlgorithmKey } from '@models';
 
 export interface AlgoHost {
   
@@ -148,17 +147,14 @@ export class InsertionSort extends SortingAlgorithm {
   }
 }
 
-export function createAlgorithm(key: AlgorithmKey, host: AlgoHost) {
-  switch (key) {
-    case 'quickSort': 
-      return new QuickSort(host);
-    case 'shellSort': 
-      return new ShellSort(host);
-    case 'bubbleSort': 
-      return new BubbleSort(host);
-    case 'selectionSort': 
-      return new SelectionSort(host);
-    case 'insertionSort': 
-      return new InsertionSort(host);
-  }
+export const algorithms = {
+  quickSort: QuickSort,
+  shellSort: ShellSort,
+  bubbleSort: BubbleSort,
+  selectionSort: SelectionSort,
+  insertionSort: InsertionSort,
+};
+
+export function createAlgorithm(key: keyof typeof algorithms, host: AlgoHost) {
+  return new algorithms[key](host);
 }
