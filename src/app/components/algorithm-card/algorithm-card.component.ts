@@ -3,6 +3,7 @@ import { Component, ElementRef, Input, ViewChild, effect, OnDestroy, OnInit, Aft
 import { SortingService } from '@services/sorting.service';
 import { createAlgorithm, AlgoHost } from '@algorithms';
 import { AlgorithmKey } from '@models';
+import { getCssVariable } from '@utils';
 
 @Component({
   selector: 'app-algorithm-card',
@@ -23,6 +24,7 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
   
   // Canvas drawing
   private ctx!: CanvasRenderingContext2D;
+  private barColor = '#000000'; // Default color
   
   private resizeObs?: ResizeObserver;
 
@@ -60,6 +62,7 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
       throw new Error('2D context not available');
     }
     this.ctx = ctx;
+    this.barColor = getCssVariable('--bar-color') || this.barColor;
 
     // Ensure size & first render
     this.setCanvasSizeToParent(canvas);
@@ -156,7 +159,7 @@ export class AlgorithmCardComponent implements OnInit, AfterViewInit, OnDestroy,
       this.ctx.moveTo(x, this.sorting.CANVAS.PADDING);
       this.ctx.lineTo(x, h);
       this.ctx.lineWidth = Math.max(this.sorting.BAR.MIN_LINE_WIDTH, this.barSpacing / this.sorting.BAR.LINE_WIDTH_DIVISOR);
-      this.ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--bar-color').trim() || '#000000';
+      this.ctx.strokeStyle = this.barColor;
       this.ctx.stroke();
     }
   }
